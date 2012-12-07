@@ -1,3 +1,9 @@
+Video files #
+######################
+*.mp4
+*.webm
+*.ogv
+
 OS generated files #
 ######################
 .DS_Store

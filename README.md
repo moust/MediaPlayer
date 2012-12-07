@@ -76,7 +76,7 @@ The following lists options which you can pass to MediaPlayer:
 * `useiPhoneUseNativeControls` (Boolean) - determine whether to use custom MediaPlayer controls on iPhone device
 * `useAndroidUseNativeControls` (Boolean) - determine whether to use custom MediaPlayer controls on Android device
 * `alwaysUseNativeControls` (Boolean) - determine whether to always use browser native controls on all device
-* `displaySourceChooser` (Boolean) - determine whether tu display source chooser controler in controls bar
+* `displaySourceChooser` (Boolean) - determine whether to display source chooser controler in controls bar
 
 Known issues
 ---------------------------------

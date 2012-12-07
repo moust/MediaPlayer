@@ -41,8 +41,9 @@
 		// init player
 		if((typeof(el) == "object") && (el instanceof HTMLMediaElement))
 		{
+			this.media = el;
 			// replace default MediaElement
-			this.media = this.create(el);
+			this.init();
 		}
 		else {
 			throw new Error("MediaPlayer need an instance HTMLMediaElement parameter.");
@@ -50,6 +51,20 @@
 	}
 
 	mp.MediaPlayer.prototype.utils = {
+		wrapAll: function(wrapper, elms) {
+			var el = elms.length ? elms[0] : elms;
+		    var parent  = el.parentNode;
+		    var sibling = el.nextSibling;
+		    wrapper.appendChild(el);
+		    while (elms.length) {
+		        wrapper.appendChild(elms[0]);
+		    }
+		    if (sibling) {
+		        parent.insertBefore(wrapper, sibling);
+		    } else {
+		        parent.appendChild(wrapper);
+		    }
+		},
 		hasClass: function(el,cls) {
 			return el.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
 		},
@@ -83,21 +98,16 @@
 		Click: document.ontouchstart === undefined ? 'click' : 'touchstart'
 	}
 
-	mp.MediaPlayer.prototype.create = function(el)
+	mp.MediaPlayer.prototype.init = function()
 	{
 		// wrapper
 		var wrapper = document.createElement("div");
 		wrapper.className = "mp-mediaplayer mp-wrapper";
+		this.utils.wrapAll(wrapper, this.media);
 		// HTMLMediaElement wrapper
 		var mediaelement = document.createElement("div");
 		mediaelement.className = "mp-mediaelement";
-		wrapper.appendChild(mediaelement);
-		// clone HTMLMediaElement
-		var media = el.cloneNode(true);
-		this.media = media;
-		mediaelement.appendChild(this.media);
-		// replace Element in DOM
-		el.parentNode.replaceChild(wrapper, el);
+		this.utils.wrapAll(mediaelement, this.media);
 		// init source(s)
 		var sources = this.media.getElementsByTagName('source');
 		this.setSrc(sources);
