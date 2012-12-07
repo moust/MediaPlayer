@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>MediaPlayer démo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="normalize.css" />
+        <link rel="stylesheet" href="../src/mediaplayer.css">
+        <style type="text/css">
+        body { background: #333; text-align: center; }
+        #konsole { color: red; text-align: left; font-size: 12px; }
+        </style>
+    </head>
+    <body>
+    	
+    	<video id="player" controls="controls" preload="none" poster="http://digup.tv/assets/video/poster/Lima_960.jpg" width="640" height="360">
+            <!-- Video sources -->
+            <source src="http://digup.tv/assets/video/hd/H264/digup-07-manuellima-FR-hd.mp4" type="video/mp4" media="(min-device-width:1000px)" title="HD 720p <small>(H264)</small>">
+            <source src="http://digup.tv/assets/video/hd/WebM/digup-07-manuellima-FR-hd.webm" type="video/webm" media="(min-device-width:1000px)" title="HD 720p <small>(WebM)</small>">
+            <source src="http://digup.tv/assets/video/sd/H264/digup-07-manuellima-FR-sd.mp4" type="video/mp4" media="(min-device-width:760px)" title="SD 576p <small>(H264)</small>">
+            <source src="http://digup.tv/assets/video/sd/WebM/digup-07-manuellima-FR-sd.webm" type="video/webm" media="(min-device-width:760px)" title="SD 576p <small>(WebM)</small>">
+            <source src="http://digup.tv/assets/video/mobile/H264/digup-07-manuellima-FR-mobile.mp4" type="video/mp4" media="" title="HQ 360p <small>(H264)</small>">
+            <source src="http://digup.tv/assets/video/mobile/WebM/digup-07-manuellima-FR-mobile.webm" type="video/webm" media="" title="HQ 360p <small>(WebM)</small>">
+            <!-- Subtiles -->
+            <track kind="subtitles" src="digup-07-manuellima-FR.srt" srclang="fr" lang="fr" label="Français <small>(subtitles)</small>"></track>
+            <!-- Flash fallback -->
+            <div class="videoFallback">
+                
+            </div>
+        </video>
+
+        <div id="konsole"></div>
+        
+        <script type="text/javascript" src="../src/captionator.js"></script>
+        <script type="text/javascript" src="../src/mediaplayer.js"></script>
+
+    	<script type="text/javascript">
+        var player = document.getElementById("player");
+        var mediaplayer = new MediaPlayer(player, {
+            useiPadUseNativeControls: false,
+            useiPhoneUseNativeControls: false,
+            useAndroidUseNativeControls: false,
+            alwaysUseNativeControls: false
+        });
+        // try {
+        //     var player = document.getElementById("player");
+        //     var mediaplayer = new MediaPlayer(player, {
+        //         useiPadUseNativeControls: false,
+        //         useiPhoneUseNativeControls: false,
+        //         useAndroidUseNativeControls: false,
+        //         alwaysUseNativeControls: false
+        //     });
+        // }
+        // catch(error) {
+        //     console.error(error);
+        //     document.getElementById("konsole").innerHTML += error.toString() + '<br />';
+        // }
+    	</script>
+	</body>
+</html>

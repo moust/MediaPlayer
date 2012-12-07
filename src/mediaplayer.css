@@ -1,0 +1,221 @@
+.mp-wrapper {
+	display: inline-block;
+	font-family: Helvetica, Arial, Verdana, Sans-serif;
+	position: relative;
+}
+.mp-mediaelement {
+	background: black;
+}
+.mp-mediaelement video,
+.mp-mediaelement audio {
+	display: block;
+}
+.mp-poster {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	overflow: hidden;
+}
+.mp-poster img {
+	width: 100%;
+	height: auto;
+}
+.mp-overlay-play {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+}
+.mp-overlay-play button {
+	display: inline-block;
+	background: url(play.png) no-repeat scroll 50% 50% transparent;
+	border: 0 none;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+}
+.mp-controls {
+	position: absolute;
+	z-index: 110; /* copationator z-index=100 */
+	width: 100%;
+	font-size: 12px;
+	line-height: 16px;
+	color: white;
+	background: #000;
+	background: rgba(0, 0, 0, 0.8);
+	background: -webkit-gradient(linear,0% 0,0% 100%,from(rgba(0, 0, 0, 0.8)),to(rgba(10, 10, 10, 0.8)));
+	background: -webkit-linear-gradient(top,rgba(0, 0, 0, 0.8),rgba(10, 10, 10, 0.8));
+	background: -moz-linear-gradient(top,rgba(0, 0, 0, 0.8),rgba(10, 10, 10, 0.8));
+	background: -o-linear-gradient(top,rgba(0, 0, 0, 0.8),rgba(10, 10, 10, 0.8));
+	background: -ms-linear-gradient(top,rgba(0, 0, 0, 0.8),rgba(10, 10, 10, 0.8));
+	background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(10, 10, 10, 0.8));
+}
+.mp-controls > div {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 4px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.mp-button {
+	position: relative;
+}
+.mp-button button {
+	display: block;
+	background: url(controls.png) no-repeat scroll 0 0 transparent;
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+.mp-play button {
+	background-position: 0 0;
+}
+.mp-pause button {
+	background-position: 0 -16px;
+}
+.mp-progress {
+	width: 200px;
+	height: 18px;
+}
+.mp-progress-total {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	background: rgba(50, 50, 50, 0.8);
+	background: -webkit-gradient(linear,0% 0,0% 100%,from(rgba(30, 30, 30, 0.8)),to(rgba(60, 60, 60, 0.8)));
+	background: -webkit-linear-gradient(top,rgba(30, 30, 30, 0.8),rgba(60, 60, 60, 0.8));
+	background: -moz-linear-gradient(top,rgba(30, 30, 30, 0.8),rgba(60, 60, 60, 0.8));
+	background: -o-linear-gradient(top,rgba(30, 30, 30, 0.8),rgba(60, 60, 60, 0.8));
+	background: -ms-linear-gradient(top,rgba(30, 30, 30, 0.8),rgba(60, 60, 60, 0.8));
+	background: linear-gradient(rgba(30, 30, 30, 0.8),rgba(60, 60, 60, 0.8));
+}
+.mp-progress-current {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: white;
+	background: rgba(255, 255, 255, 0.8);
+	background: -webkit-gradient(linear,0% 0,0% 100%,from(rgba(255, 255, 255, 0.8)),to(rgba(200, 200, 200, 0.8)));
+	background: -webkit-linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(200, 200, 200, 0.8));
+	background: -moz-linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(200, 200, 200, 0.8));
+	background: -o-linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(200, 200, 200, 0.8));
+	background: -ms-linear-gradient(top,rgba(255, 255, 255, 0.8),rgba(200, 200, 200, 0.8));
+	background: linear-gradient(rgba(255, 255, 255, 0.8),rgba(200, 200, 200, 0.8));
+}
+.mp-progress-loaded {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: #3CAAC8;
+	background: rgba(60, 170, 200, 0.8);
+	background: -webkit-gradient(linear,0% 0,0% 100%,from(rgba(44, 124, 145, 0.8)),to(rgba(78, 183, 212, 0.8)));
+	background: -webkit-linear-gradient(top,rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
+	background: -moz-linear-gradient(top,rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
+	background: -o-linear-gradient(top,rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
+	background: -ms-linear-gradient(top,rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
+	background: linear-gradient(rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
+}
+.mp-loading {
+	background: -webkit-repeating-linear-gradient(-45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
+	background: -moz-repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
+	background: -ms-repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
+	background: -o-repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
+	background: repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
+	-webkit-animation: loading 1s infinite linear;*/
+	-moz-animation: loading 1s infinite linear;
+	-ms-animation: loading 1s infinite linear;
+	-o-animation: loading 1s infinite linear;
+	animation: loading 1s infinite linear;
+}
+@-webkit-keyframes loading {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 87px 0px; }
+}
+@-moz-keyframes loading {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 87px 0px; }
+}
+@-ms-keyframes loading {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 87px 0px; }
+}
+@-o-keyframes loading {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 87px 0px; }
+}
+@keyframes loading {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 87px 0px; }
+}
+.mp-time {}
+.mp-volume button {
+	background-position: -16px -16px;
+}
+.mp-mute button {
+	background-position: -16px 0px;
+}
+.mp-tracks button {
+	background-position: -48px 0;
+}
+.mp-sources button {
+	background-position: -128px 0;
+}
+.mp-fullscreen button {
+	background-position: -32px 0;
+}
+.mp-unfullscreen button {
+	background-position: -32px -16px;
+}
+.mp-flybox {
+	display: none;
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	background: black;
+	list-style: inside none;
+	text-align: left;
+}
+.mp-button:hover .mp-flybox {
+	display: block;
+}
+.mp-flybox-list {
+	width: auto;
+	white-space: nowrap;
+}
+.mp-flybox-list li {
+	line-height: 1.4em;
+	padding: 2px 4px;
+}
+.mp-flybox-list input[type="radio"] {
+	display: none;
+}
+.mp-flybox-list label {
+	cursor: pointer;
+}
+.mp-flybox-list input[type="radio"]:checked + label {
+	color: rgb(78, 183, 212);
+}

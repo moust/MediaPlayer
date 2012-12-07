@@ -1,0 +1,339 @@
+1
+00:00:29,840 --> 00:00:31,480
+La connaissance humaine croît avec le temps
+
+2
+00:00:31,840 --> 00:00:36,680
+Dans moins de 25 ans nous aurons dans un ordinateur portable l'équivalent du contenu de 10 fois
+
+3
+00:00:36,640 --> 00:00:39,920
+le contenu de tous les livres de la bibliothèque du Congrès.
+
+4
+00:00:45,880 --> 00:00:50,560
+Google traite chaque jour environs 25 petabyte de données
+
+5
+00:00:50,520 --> 00:00:54,360
+sachant que 1 petabyte est l'équivalent de 1 millions de giga,
+
+6
+00:00:54,640 --> 00:00:57,080
+nous sommes face à des quantités gigantesque de données.
+
+7
+00:00:57,120 --> 00:00:59,640
+Il nous faut donner du sens à toutes ces données.
+
+8
+00:00:59,760 --> 00:01:02,880
+C'est pour moi un des plus grands défis de ce siècle... dans tous les domaines,
+
+9
+00:01:02,840 --> 00:01:07,280
+de la biologie à Internet, des réseaux de connaissances aux bibliothèques de données.
+
+10
+00:01:07,440 --> 00:01:10,560
+C'est ce défi qui a motivé mon travail avec le site Visual Complexity.
+
+11
+00:01:40,520 --> 00:01:44,760
+J'ai une formation en design industriel. Je n'avais aucune idée de ce qu'était la visualisation de données
+
+12
+00:01:44,720 --> 00:01:47,760
+lorsque j'ai fait un master à New York.
+
+13
+00:01:48,400 --> 00:01:50,840
+D'autant qu'à cette époque, il y a environ 4 ou 5 ans,
+
+14
+00:01:50,880 --> 00:01:57,400
+la visualisation de données était un domaine très académique et scientifique.
+
+15
+00:01:57,680 --> 00:02:01,200
+Ce n'était pas un sujet dont on parlait beaucoup,
+
+16
+00:02:01,560 --> 00:02:04,920
+j'ai donc dû le défricher par moi même. Un de mes professeurs à cette époque était très intéressé
+
+17
+00:02:05,040 --> 00:02:08,760
+par les manières innovantes de visualiser et d'afficher de l'information ou des données.
+
+18
+00:02:09,240 --> 00:02:12,720
+Il m'a montré ces diagrammes appelés "Spectre de la compréhension" de Nathan Shedroff
+
+19
+00:02:13,080 --> 00:02:16,880
+où les données se convertissent en informations, puis en connaissances et en sagesse,
+
+20
+00:02:17,880 --> 00:02:20,600
+parce que des données réellement signifiantes, ce n'est pas un acquis.
+
+21
+00:02:21,320 --> 00:02:26,000
+Il est primordial de commencer à donner du sens aux énormes quantités de données
+
+22
+00:02:26,040 --> 00:02:27,800
+dont nous disposons au quotidien
+
+23
+00:02:27,760 --> 00:02:31,680
+et des les convertir en informations signifiantes, puis en connaissances.
+
+24
+00:02:38,520 --> 00:02:42,200
+L'information brute, c'est la manière dont nous appréhendons habituellement les données.
+
+25
+00:02:42,440 --> 00:02:46,840
+Par exemple chaque pays a ses propres instituts statistiques dont les données sont accessibles
+
+26
+00:02:47,120 --> 00:02:49,400
+mais cela se présente habituellement sous la forme de tableaux excel
+
+27
+00:02:49,600 --> 00:02:52,680
+dans lesquels il est très difficile de trouver des modèles, des schémas, des relations,
+
+28
+00:02:53,120 --> 00:02:56,080
+des révélations qui vous font dire "Oh, je tiens quelque chose",
+
+29
+00:02:56,120 --> 00:02:59,560
+ou "je comprends que quelque chose se passe...", c'est comme ça que la connaissance émerge.
+
+30
+00:03:46,720 --> 00:03:52,280
+Compte tenu des quantités d'informations disponibles, nous avons besoin de tous les apports technologiques disponibles
+
+31
+00:03:52,280 --> 00:03:56,960
+pour expliquer ces données et visualiser l'information d'une manière plus pertinente.
+
+32
+00:03:56,960 --> 00:04:00,880
+Le graphisme animé et les écrans tactiles nous le permettent de plus en plus
+
+33
+00:04:00,880 --> 00:04:04,440
+et c'est un champ que je vais également explorer dans le futur.
+
+34
+00:04:04,440 --> 00:04:08,800
+En outre, l'interactivité doit en être un élément de levier pour cela.
+
+35
+00:04:08,800 --> 00:04:11,000
+J'ai d'ailleurs, il y a déjà un moment, présenté un projet
+
+36
+00:04:11,000 --> 00:04:16,720
+qui permettait de visualiser le système de réseaux géographiques qui existe sur Terre,
+
+37
+00:04:16,720 --> 00:04:18,760
+le tout construit à partir du rapport annuel de la CIA.
+
+38
+00:04:18,760 --> 00:04:23,160
+Et puisque c'est interactif, vous pouvez séparer
+
+39
+00:04:26,680 --> 00:04:29,520
+et rendre ces morceaux visibles un par un.
+
+40
+00:04:29,640 --> 00:04:33,800
+Grâce à cela vous ne vous sentez pas submergé par l'information,
+
+41
+00:04:34,080 --> 00:04:37,040
+même s'il s'agit en fait d'un système très complexe.
+
+42
+00:04:37,360 --> 00:04:39,480
+Il y a différentes manières de faire en sorte
+
+43
+00:04:39,440 --> 00:04:41,640
+que l'utilisateur ne se sente pas submergé par l'information
+
+44
+00:04:41,760 --> 00:04:44,120
+et en tire quelque chose
+
+45
+00:04:44,400 --> 00:04:46,800
+qui peut aboutir à une forme de connaissance.
+
+46
+00:05:05,800 --> 00:05:08,800
+Je pense que la visualisation de données est un domaine
+
+47
+00:05:08,880 --> 00:05:13,160
+où la science et l'art se rencontrent de manière harmonieuse.
+
+48
+00:05:13,480 --> 00:05:17,760
+Beaucoup de scientifiques sont de plus en plus intéressés par l'art
+
+49
+00:05:17,960 --> 00:05:22,800
+et créent des choses qui sortent des règles scientifiques traditionnelles;
+
+50
+00:05:22,760 --> 00:05:28,680
+ils explorent véritablement leur créativité.
+
+51
+00:05:28,880 --> 00:05:31,280
+D'autre part, de plus en plus d'artistes
+
+52
+00:05:31,640 --> 00:05:33,840
+s'intéressent à la programmation car il savent
+
+53
+00:05:34,040 --> 00:05:37,840
+que grâce à la programmation ils peuvent explorer leur créativité
+
+54
+00:05:38,200 --> 00:05:39,720
+d'une manière innovante, nouvelle.
+
+55
+00:05:39,960 --> 00:05:43,280
+Ils en deviennent eux mêmes des programmeurs ou des informaticiens.
+
+56
+00:05:44,000 --> 00:05:47,680
+Jusqu'à alors, dans les conférences sur la visualisation de données où j'ai pu me rendre,
+
+57
+00:05:48,320 --> 00:05:52,760
+vous n'aviez presque jamais de discussion sur le design ou la fonctionnalité de ce dernier,
+
+58
+00:05:52,800 --> 00:05:56,200
+ni sur l'aspect visuel final.
+
+59
+00:05:56,440 --> 00:06:00,600
+C'est donc une très bonne chose que davantage de personnes venant du design
+
+60
+00:06:00,640 --> 00:06:02,600
+et ayant une formation artistique se dirigent vers ce domaine,
+
+61
+00:06:02,600 --> 00:06:05,960
+et non seulement donnent vie à des projets
+
+62
+00:06:06,080 --> 00:06:09,400
+et des applications qui impliquent le spectateur
+
+63
+00:06:09,400 --> 00:06:12,480
+et rendent les systèmes plus compréhensibles,
+
+64
+00:06:12,560 --> 00:06:14,840
+mais également qui le rend bien plus intéressant visuellement.
+
+65
+00:06:30,000 --> 00:06:32,520
+La dimension esthétique vient souvent comme une conséquence.
+
+66
+00:06:32,560 --> 00:06:35,720
+Ce n'est pas le but initial des projets de visualisation de données.
+
+67
+00:06:35,840 --> 00:06:39,120
+L'objectif de la visualisation de données est de rendre les systèmes plus compréhensibles.
+
+68
+00:06:39,240 --> 00:06:44,560
+Si vous ne pouvez atteindre cet objectif, cela devient de l'art génératif.
+
+69
+00:06:44,760 --> 00:06:48,920
+Je suis un grand fan de l'art génératif et de l'art numérique en général,
+
+70
+00:06:48,960 --> 00:06:53,840
+mais pour faire de la visualisation de données il faut contribuer à la compréhension des systèmes.
+
+71
+00:07:01,920 --> 00:07:05,240
+Vous n'avez pas idée, mais ma boite d'emails est un formidable échantillon
+
+72
+00:07:05,360 --> 00:07:09,960
+de l'intérêt multidisciplinaire que suscite mon site "Visual Complexity".
+
+73
+00:07:09,960 --> 00:07:14,200
+Je reçois des emails d'artistes, d'architectes, de physiciens, de mathématiciens...
+
+74
+00:07:14,480 --> 00:07:18,440
+beaucoup de gens se retrouvent autour de ce sujet, et c'est vraiment passionnant.
+
+75
+00:07:18,920 --> 00:07:22,960
+Et même d'autres projets sur lesquels j'ai travaillé dans ce domaine
+
+76
+00:07:23,120 --> 00:07:26,000
+ce sont fait grâce à Visual Complexity.
+
+77
+00:07:26,160 --> 00:07:29,480
+Ce site a donc marqué une vraie étape dans ma vie,
+
+78
+00:07:30,000 --> 00:07:33,640
+et je prévois de continuer à le développer encore davantage.
+
+79
+00:07:33,840 --> 00:07:36,880
+Je pense que le vrai challenge de ce travail
+
+80
+00:07:37,000 --> 00:07:40,000
+est de trouver un fil conducteur parmi tous ces projets,
+
+81
+00:07:40,560 --> 00:07:43,400
+d'essayer de définir la syntaxe d'une nouvelle langue.
+
+82
+00:07:43,600 --> 00:07:45,840
+Je pense vraiment que c'est entrain de devenir un nouveau langage
+
+83
+00:07:46,040 --> 00:07:51,400
+et j'espère que le site va nous aider à comprendre les points communs parmi la variété des projets.
+
+84
+00:07:51,760 --> 00:07:54,640
+de telle sorte que si on commence à comprendre la syntaxe de ce langage,
+
+85
+00:07:54,880 --> 00:07:57,160
+nous pourrons trouver de meilleures solutions dans le futur.
