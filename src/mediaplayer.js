@@ -24,7 +24,8 @@
 			useiPadUseNativeControls: false,
 		    useiPhoneUseNativeControls: false, 
 		    useAndroidUseNativeControls: false,
-		    alwaysUseNativeControls: false
+		    alwaysUseNativeControls: false,
+		    displaySourceChooser: true
 		};
 
 		// extend options
@@ -32,8 +33,13 @@
 			this.options[prop] = options[prop];
 		}
 
+		// get HTMLMediaElement element
+		if(typeof(el) == "string") {
+			el = document.getElementById(el);
+		}
+
 		// init player
-		if(el instanceof HTMLMediaElement)
+		if((typeof(el) == "object") && (el instanceof HTMLMediaElement))
 		{
 			// replace default MediaElement
 			this.media = this.create(el);
@@ -81,7 +87,7 @@
 	{
 		// wrapper
 		var wrapper = document.createElement("div");
-		wrapper.className = "mp-wrapper";
+		wrapper.className = "mp-mediaplayer mp-wrapper";
 		// HTMLMediaElement wrapper
 		var mediaelement = document.createElement("div");
 		mediaelement.className = "mp-mediaelement";
@@ -98,7 +104,6 @@
 		// init Captionator if TextTrack not available in brower
 		if(window.captionator) {
 			this.captioned = window.captionator.captionify(this.media, null, { controlHeight: 0 });
-			this.media.textTracks = this.media.tracks;
 		}
 		// bind HTMLMediaElement error event
 		this.media.addEventListener("error", this.errorHandler, false);
@@ -113,7 +118,7 @@
 			this.options.alwaysUseNativeControls
 		);
 		// init overlays
-		if(!this.useNativeControls) {
+		if((this.media instanceof HTMLVideoElement) && !this.useNativeControls) {
 			// init poster
 			this.poster = this.createPoster(this.media.getAttribute('poster'));
 			mediaelement.appendChild(this.poster);
@@ -164,8 +169,8 @@
 
 		// play/pause button
 		var playBtn = document.createElement("button");
-		playBtn.type = "button";
-		playBtn.title = "Play/Pause";
+		playBtn.setAttribute("type", "button");
+		playBtn.setAttribute("title", "Play/Pause");
 		// play/pause container
 		var play = document.createElement("div");
 		play.className = "mp-button mp-play";
@@ -213,8 +218,8 @@
 
 		// volume button
 		var volumeBtn = document.createElement("button");
-		volumeBtn.type = "button";
-		volumeBtn.title = "Mute toggle";
+		volumeBtn.setAttribute("type", "button");
+		volumeBtn.setAttribute("title", "Mute toggle");
 		// volume container
 		var volume = document.createElement("div");
 		volume.className = "mp-button mp-volume";
@@ -222,10 +227,11 @@
 		// add to controls
 		controls.appendChild(volume);
 
-		if(this.media.textTracks && this.media.textTracks.length > 0) {
+		var textTracks = this.captioned ? this.media.tracks : this.media.textTracks;
+		if(textTracks && textTracks.length > 0) {
 			// switch button
 			var tracksBtn = document.createElement("button");
-			tracksBtn.type = "button";
+			tracksBtn.setAttribute("type", "button");
 			tracksBtn.title = "Captions/Subtitles";
 			// switch container
 			var tracks = document.createElement("div");
@@ -237,16 +243,16 @@
 			// none options
 			var noneOptionsAdded = [];
 			// add each track to options
-			for(var i = 0; i < this.media.textTracks.length; i++) {
+			for(var i = 0; i < textTracks.length; i++) {
 				// add none option if doesn't already added
-				if(noneOptionsAdded[this.media.textTracks[i].kind] == undefined) {
-					var none = { kind:this.media.textTracks[i].kind, label:"None", language: "" };
+				if(noneOptionsAdded[textTracks[i].kind] == undefined) {
+					var none = { kind:textTracks[i].kind, label:"None", language: "" };
 					none.mode = this.captioned ? window.captionator.TextTrack.SHOWING : "showing"
 					var noneItem = this._createTrackItem(none, -1);
 					tracksList.appendChild(noneItem);
-					noneOptionsAdded.push(this.media.textTracks[i].kind);
+					noneOptionsAdded.push(textTracks[i].kind);
 				}
-				var tracksListItem = this._createTrackItem(this.media.textTracks[i], i);
+				var tracksListItem = this._createTrackItem(textTracks[i], i);
 				tracksList.appendChild(tracksListItem);
 			}
 			tracks.appendChild(tracksList);
@@ -255,11 +261,11 @@
 		}
 
 		// add source switcher if needed
-		if(this.sources && this.sources.length > 0) {
+		if(this.options.displaySourceChooser && this.sources && this.sources.length > 0) {
 			// switch button
 			var sourcesBtn = document.createElement("button");
-			sourcesBtn.type = "button";
-			sourcesBtn.title = "Switch quality";
+			sourcesBtn.setAttribute("type", "button");
+			sourcesBtn.setAttribute("title", "Switch quality");
 			// switch container
 			var sources = document.createElement("div");
 			sources.className = "mp-button mp-sources";
@@ -278,15 +284,17 @@
 		}
 
 		// fullscreen button
-		var fullscreenBtn = document.createElement("button");
-		fullscreenBtn.type = "button";
-		fullscreenBtn.title = "Fullsreen";
-		// fullscreen container
-		var fullscreen = document.createElement("div");
-		fullscreen.className = "mp-button mp-fullscreen";
-		fullscreen.appendChild(fullscreenBtn);
-		// add to controls
-		controls.appendChild(fullscreen);
+		if(this.media instanceof HTMLVideoElement) {
+			var fullscreenBtn = document.createElement("button");
+			fullscreenBtn.setAttribute("type", "button");
+			fullscreenBtn.setAttribute("title", "Fullsreen");
+			// fullscreen container
+			var fullscreen = document.createElement("div");
+			fullscreen.className = "mp-button mp-fullscreen";
+			fullscreen.appendChild(fullscreenBtn);
+			// add to controls
+			controls.appendChild(fullscreen);
+		}
 
 		return controls;
 	}
@@ -296,20 +304,22 @@
 		var tracksListItem = document.createElement("li");
 		// radio input
 		var tracksListItemRadio = document.createElement("input");
-		tracksListItemRadio.type = "radio";
-		tracksListItemRadio.name = textTrack.kind || "unknow";
-		tracksListItemRadio.id = "track-"+i;
-		tracksListItemRadio.value = i;
+		tracksListItemRadio.setAttribute("type", "radio");
+		tracksListItemRadio.setAttribute("name", (textTrack.kind || "unknow"));
+		tracksListItemRadio.setAttribute("id", this.media.id+"track-"+i);
+		tracksListItemRadio.setAttribute("value", i);
 		// default value checked
 		if(this.captioned) {
 			if(textTrack.mode == window.captionator.TextTrack.SHOWING) tracksListItemRadio.checked = "checked";
+		} else if(TextTrack.SHOWING) {
+			if(textTrack.mode == TextTrack.SHOWING) tracksListItemRadio.checked = "checked";
 		} else {
 			if(textTrack.mode.toLowerCase() == "showing") tracksListItemRadio.checked = "checked";
 		}
 		tracksListItem.appendChild(tracksListItemRadio);
 		// track label
 		var tracksListItemLabel = document.createElement("label");
-		tracksListItemLabel.setAttribute("for", "track-"+i);
+		tracksListItemLabel.setAttribute("for", this.media.id+"track-"+i);
 		tracksListItemLabel.innerHTML = (textTrack.label || textTrack.language);
 		tracksListItem.appendChild(tracksListItemLabel);
 		// return item
@@ -321,16 +331,16 @@
 		var sourcesListItem = document.createElement("li");
 		// radio input
 		var sourcesListItemRadio = document.createElement("input");
-		sourcesListItemRadio.type = "radio";
-		sourcesListItemRadio.name = "source";
-		sourcesListItemRadio.id = "source-"+i;
-		sourcesListItemRadio.value = i;
+		sourcesListItemRadio.setAttribute("type", "radio");
+		sourcesListItemRadio.setAttribute("name", "source");
+		sourcesListItemRadio.setAttribute("id", this.media.id+"source-"+i);
+		sourcesListItemRadio.setAttribute("value", i);
 		// default value checked
 		if(i == 0) sourcesListItemRadio.checked = "checked";
 		sourcesListItem.appendChild(sourcesListItemRadio);
 		// source label
 		var sourcesListItemLabel = document.createElement("label");
-		sourcesListItemLabel.setAttribute("for", "source-"+i);
+		sourcesListItemLabel.setAttribute("for", this.media.id+"source-"+i);
 		sourcesListItemLabel.innerHTML = source.title || source.type;
 		sourcesListItem.appendChild(sourcesListItemLabel);
 		// return item
@@ -372,9 +382,11 @@
 			self.setBufferProgress(e.target.buffered)
 		}, false);
 
-		this.overlayPlay.addEventListener(this.Events.Click, function(e){
-			self.togglePlay();
-		}, false);
+		if(this.overlayPlay) {
+			this.overlayPlay.addEventListener(this.Events.Click, function(e){
+				self.togglePlay();
+			}, false);
+		}
 
 		this.controls.querySelector(".mp-play button").addEventListener(this.Events.Click, function(e){
 			self.togglePlay();
@@ -388,9 +400,12 @@
 			self.toggleVolume();
 		}, false);
 
-		this.controls.querySelector(".mp-fullscreen button").addEventListener(this.Events.Click, function(e){
-			self.toggleFullscreen();
-		}, false);
+		var fullscreenBtn = this.controls.querySelector(".mp-fullscreen button");
+		if(fullscreenBtn) {
+			fullscreenBtn.addEventListener(this.Events.Click, function(e){
+				self.toggleFullscreen();
+			}, false);
+		}
 
 		// fullscreenchange event : update fullscreen button
 		document.addEventListener("fullscreenchange", function(e){
@@ -424,23 +439,22 @@
 				// add event listener on each track option
 				tracksRadios[i].addEventListener("change", function(e){
 					// active track on track option selected
-					var track = self.media.textTracks[this.value];
-					if(track) {
+					var textTracks = self.captioned ? self.media.tracks : self.media.textTracks;
+					var textTrack = textTracks[this.value];
+					if(textTrack) {
 						// disable all other tracks of same kind
-						for(var i = 0; i < self.media.textTracks.length; i++) {
-							if(self.media.textTracks[i].kind == track.kind) {
-								if(self.captioned) {
-									self.media.textTracks[i].mode = window.captionator.TextTrack.OFF;
-								} else {
-									self.media.textTracks[i].mode = "disabled";
-								}
+						for(var i = 0; i < textTracks.length; i++) {
+							if(textTracks[i].kind == textTrack.kind) {
+								textTracks[i].mode = self.captioned ? window.captionator.TextTrack.OFF : "disabled";
 							}
 						}
-						// active selected track
+						// switch selected track mode
 						if(self.captioned) {
-							track.mode = (track.mode == window.captionator.TextTrack.OFF) ? window.captionator.TextTrack.SHOWING : window.captionator.TextTrack.OFF;
+							textTrack.mode = (textTrack.mode == window.captionator.TextTrack.OFF) ? window.captionator.TextTrack.SHOWING : window.captionator.TextTrack.OFF;
+						} else if(TextTrack.SHOWING) {
+							textTrack.mode = (textTrack.mode == TextTrack.DISABLED) ? TextTrack.SHOWING : TextTrack.DISABLED;
 						} else {
-							track.mode = (track.mode == "disabled") ? "showing" : "disabled";
+							textTrack.mode = (textTrack.mode == "disabled") ? "showing" : "disabled";
 						}
 					}
 				}, false);
@@ -534,8 +548,8 @@
 	{
 		var playBtn = this.controls.querySelector(".mp-play");
 		this.utils.addClass(playBtn, "mp-pause");
-		this.poster.style.display = 'none';
-		this.overlayPlay.style.display = 'none';
+		if(this.poster) this.poster.style.display = 'none';
+		if(this.overlayPlay) this.overlayPlay.style.display = 'none';
 		this.media.play();
 	}
 
@@ -628,41 +642,43 @@
 
 	mp.MediaPlayer.prototype.errorHandler = function(e)
 	{
-		switch(event.target.networkState)
+		console.error(e.target);
+
+		switch(e.target.networkState)
 		{
-		    case event.target.NETWORK_EMPTY:
+		    case e.target.NETWORK_EMPTY:
 		        throw new Error('NETWORK_EMPTY');
 		    break;
-		    case event.target.NETWORK_IDLE:
+		    case e.target.NETWORK_IDLE:
 		        throw new Error('NETWORK_IDLE');
 		    break;
-		    case event.target.NETWORK_LOADING:
+		    case e.target.NETWORK_LOADING:
 		        throw new Error('NETWORK_LOADING');
 		    break;
-		    case event.target.NETWORK_NO_SOURCE:
+		    case e.target.NETWORK_NO_SOURCE:
 		        throw new Error('NETWORK_NO_SOURCE');
 		    break;
 		    default:
 		        throw new Error('UNKNOW');
 		}
 
-		if(event.target.error)
+		if(e.target.error)
 		{
-		    switch(event.target.error.code)
+		    switch(e.target.error.code)
 		    {
-		        case event.target.error.MEDIA_ERR_ABORTED:
+		        case e.target.error.MEDIA_ERR_ABORTED:
 		           throw new Error('MEDIA_ERR_ABORTED');
 		           throw new Error('You aborted the video playback.');
 		           break;
-		         case event.target.error.MEDIA_ERR_NETWORK:
+		         case e.target.error.MEDIA_ERR_NETWORK:
 		           throw new Error('MEDIA_ERR_NETWORK');
 		           throw new Error('A network error caused the video download to fail part-way.');
 		           break;
-		         case event.target.error.MEDIA_ERR_DECODE:
+		         case e.target.error.MEDIA_ERR_DECODE:
 		           throw new Error('MEDIA_ERR_DECODE');
 		           throw new Error('The video playback was aborted due to a corruption problem or because the video used features your browser did not support.');
 		           break;
-		         case event.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+		         case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
 		           throw new Error('MEDIA_ERR_SRC_NOT_SUPPORTED');
 		           throw new Error('The video could not be loaded, either because the server or network failed or because the format is not supported.');
 		           break;

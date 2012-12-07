@@ -2,6 +2,8 @@
 	display: inline-block;
 	font-family: Helvetica, Arial, Verdana, Sans-serif;
 	position: relative;
+	min-width: 328px;
+	padding-bottom: 24px;
 }
 .mp-mediaelement {
 	background: black;
@@ -138,6 +140,7 @@
 	background: linear-gradient(rgba(44, 124, 145, 0.8),rgba(78, 183, 212, 0.8));
 }
 .mp-loading {
+	background: #4EB7D4;
 	background: -webkit-repeating-linear-gradient(-45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
 	background: -moz-repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);
 	background: -ms-repeating-linear-gradient(45deg, rgb(78, 183, 212), rgb(78, 183, 212) 10px, rgb(44, 124, 145) 10px, rgb(44, 124, 145) 20px);

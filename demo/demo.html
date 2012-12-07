@@ -28,13 +28,20 @@
             <track kind="subtitles" src="digup-07-manuellima-FR.srt" srclang="fr" lang="fr" label="Français <small>(subtitles)</small>"></track>
             <!-- Flash fallback -->
             <div class="videoFallback">
-                
+                <!-- TODO -->
             </div>
         </video>
 
+        <br /><br />
+
+        <audio id="audioplayer" controls="controls">
+            <source src="PeasantWhat3_w3.mp3" type="audio/mp3" title="MP3"></source>
+            <source src="PeasantWhat3_w3.ogg" type="audio/ogg" title="OGG"></source>
+        </audio>
+
         <div id="konsole"></div>
         
-        <script type="text/javascript" src="../src/captionator.js"></script>
+        <script type="text/javascript" src="../src/lib/captionator.js"></script>
         <script type="text/javascript" src="../src/mediaplayer.js"></script>
 
     	<script type="text/javascript">
@@ -58,6 +65,8 @@
         //     console.error(error);
         //     document.getElementById("konsole").innerHTML += error.toString() + '<br />';
         // }
+
+        var audioplayer = new MediaPlayer('audioplayer', { displaySourceChooser: false });
     	</script>
 	</body>
 </html>
