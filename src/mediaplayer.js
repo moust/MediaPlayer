@@ -107,6 +107,9 @@
 		// HTMLMediaElement wrapper
 		var mediaelement = document.createElement("div");
 		mediaelement.className = "mp-mediaelement";
+		if(this.media instanceof HTMLVideoElement) {
+			mediaelement.className += " mp-videoelement";
+		}
 		this.utils.wrapAll(mediaelement, this.media);
 		// init source(s)
 		var sources = this.media.getElementsByTagName('source');
@@ -270,8 +273,8 @@
 			controls.appendChild(tracks);
 		}
 
-		// add source switcher if needed
-		if(this.options.displaySourceChooser && this.sources && this.sources.length > 0) {
+		// add source switcher if needed (more than one source)
+		if(this.options.displaySourceChooser && this.sources && this.sources.length > 1) {
 			// switch button
 			var sourcesBtn = document.createElement("button");
 			sourcesBtn.setAttribute("type", "button");
@@ -486,7 +489,7 @@
 			for(var i = 0; i < source.length; i++) {
 				if( this.media.canPlayType(source[i].type) ) {
 					if(source[i].media && window.matchMedia) {
-						if(window.matchMedia(source[i].media) ) {
+						if(window.matchMedia(source[i].media).matches == true) {
 							this.sources.push(source[i]);
 						}
 					} else {
