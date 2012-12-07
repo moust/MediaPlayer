@@ -3,15 +3,15 @@ MediaPlayer
 
 **Creates a JavaScript object that mimics HTML5 MediaElement API**
 
-What does Captionator do?
+What does MediaPlayer do?
 -------------------------
 
 * mimics the HTML5 MediaElement (`video>` or `<audio>` element)
 * support `<source>` element
 * support `media` attribute on `<source>` element
-* support `<track>` element (require Captionator polifill for non native browser support : https://github.com/cgiffard/Captionator)
+* support `<track>` element (require Captionator polifill non native brower support of the WHATWG TimedTextTrack Specification : https://github.com/cgiffard/Captionator)
 * Works in Firefox 3.5+, IE9, Safari 4+, Chrome, Opera 11... and any browser which supports HTML5 Video
-* No javascript library dependencies like jQuery or Mootools
+* Only native code, no javascript library dependencies like jQuery or Mootools
 
 Using MediaPlayer
 ---------------------------------
@@ -20,7 +20,7 @@ Using MediaPlayer
 
 ```html
 <link rel="stylesheet" href="mediaplayer.css">
-
+<!-- Captionator is necessary for non native brower support of the WHATWG TimedTextTrack Specification -->
 <script type="text/javascript" src="../src/captionator.js"></script>
 <script type="text/javascript" src="../src/mediaplayer.js"></script>
 ```
@@ -48,7 +48,7 @@ Using MediaPlayer
 
 ### 3. Sartup script ###
 
-Include following code juste before the `<\body>` close tag
+Include following code just before the `<\body>` close tag
 
 ```html
 <script type="text/javascript">
@@ -64,7 +64,7 @@ MediaPlayer take an additional parameter to define an object of lists options :
 ```html
 <script type="text/javascript">
 var mediaplayer = new MediaPlayer(document.getElementById("player"), {
-	useiPhoneUseNativeControls: true
+	useiPhoneUseNativeControls: true,
 	useAndroidUseNativeControls: true
 });
 </script>
