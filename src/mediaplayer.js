@@ -603,7 +603,9 @@
 
 	mp.MediaPlayer.prototype.toggleFullscreen = function()
 	{
-		if(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || (false == this.utils.hasClass(this.controls.querySelector(".mp-fullscreen"), "mp-unfullscreen")) ) {
+		var fullscreenControl = this.controls.querySelector(".mp-fullscreen");
+
+		if(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || (fullscreenControl && false == this.utils.hasClass(fullscreenControl, "mp-unfullscreen")) ) {
 			if(document.exitFullscreen) {
 				document.exitFullscreen();
 			}
@@ -629,10 +631,12 @@
 
 	mp.MediaPlayer.prototype.fullsSreenChanged = function()
 	{
+		var fullscreenControl = this.controls.querySelector(".mp-fullscreen");
+
 		if(!(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen)) {
-	    	this.utils.removeClass(this.controls.querySelector(".mp-fullscreen"), "mp-unfullscreen");
+	    	if(fullscreenControl) this.utils.removeClass(fullscreenControl, "mp-unfullscreen");
 	    } else {
-	    	this.utils.addClass(this.controls.querySelector(".mp-fullscreen"), "mp-unfullscreen");
+	    	if(fullscreenControl) this.utils.addClass(fullscreenControl, "mp-unfullscreen");
 	    }
 	}
 
@@ -642,50 +646,44 @@
 
 	mp.MediaPlayer.prototype.errorHandler = function(e)
 	{
-		console.error(e.target);
-
 		switch(e.target.networkState)
 		{
 		    case e.target.NETWORK_EMPTY:
-		        throw new Error('NETWORK_EMPTY');
+		    	throw new Error('The element is not initialized.');
 		    break;
 		    case e.target.NETWORK_IDLE:
-		        throw new Error('NETWORK_IDLE');
+		    	throw new Error('The network connection is idle.');
 		    break;
 		    case e.target.NETWORK_LOADING:
-		        throw new Error('NETWORK_LOADING');
+		    	throw new Error('The media resource is loading.');
 		    break;
 		    case e.target.NETWORK_NO_SOURCE:
-		        throw new Error('NETWORK_NO_SOURCE');
+		    	throw new Error('No media resource was found.');
 		    break;
 		    default:
-		        throw new Error('UNKNOW');
+		    	throw new Error('Unknown network state.');
+		    break;
 		}
 
 		if(e.target.error)
 		{
 		    switch(e.target.error.code)
 		    {
-		        case e.target.error.MEDIA_ERR_ABORTED:
-		           throw new Error('MEDIA_ERR_ABORTED');
-		           throw new Error('You aborted the video playback.');
-		           break;
-		         case e.target.error.MEDIA_ERR_NETWORK:
-		           throw new Error('MEDIA_ERR_NETWORK');
-		           throw new Error('A network error caused the video download to fail part-way.');
-		           break;
-		         case e.target.error.MEDIA_ERR_DECODE:
-		           throw new Error('MEDIA_ERR_DECODE');
-		           throw new Error('The video playback was aborted due to a corruption problem or because the video used features your browser did not support.');
-		           break;
-		         case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-		           throw new Error('MEDIA_ERR_SRC_NOT_SUPPORTED');
-		           throw new Error('The video could not be loaded, either because the server or network failed or because the format is not supported.');
-		           break;
-		         default:
-		           throw new Error('UNKNOW');
-		           throw new Error('An unknown error occurred.');
-		           break;
+				case e.target.error.MEDIA_ERR_ABORTED:
+					throw new Error('You aborted the video playback.');
+				break;
+				case e.target.error.MEDIA_ERR_NETWORK:
+					throw new Error('A network error caused the video download to fail part-way.');
+				break;
+				case e.target.error.MEDIA_ERR_DECODE:
+					throw new Error('The video playback was aborted due to a corruption problem or because the video used features your browser did not support.');
+				break;
+				case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+					throw new Error('The video could not be loaded, either because the server or network failed or because the format is not supported.');
+				break;
+				default:
+					throw new Error('An unknown error occurred.');
+				break;
 		    }
 		}
 	}

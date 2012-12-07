@@ -10,22 +10,20 @@
         <link rel="stylesheet" href="normalize.css" />
         <link rel="stylesheet" href="../src/mediaplayer.css">
         <style type="text/css">
-        body { background: #333; text-align: center; }
-        #konsole { color: red; text-align: left; font-size: 12px; }
+        body { background: #333; color: #eee; text-align: center; }
+        .credits { font-size: 0.8em; }
         </style>
     </head>
     <body>
     	
-    	<video id="player" controls="controls" preload="none" poster="http://digup.tv/assets/video/poster/Lima_960.jpg" width="640" height="360">
+    	<video id="player" controls="controls" preload="none" poster="poster.png" width="640" height="360">
             <!-- Video sources -->
-            <source src="http://digup.tv/assets/video/hd/H264/digup-07-manuellima-FR-hd.mp4" type="video/mp4" media="(min-device-width:1000px)" title="HD 720p <small>(H264)</small>">
-            <source src="http://digup.tv/assets/video/hd/WebM/digup-07-manuellima-FR-hd.webm" type="video/webm" media="(min-device-width:1000px)" title="HD 720p <small>(WebM)</small>">
-            <source src="http://digup.tv/assets/video/sd/H264/digup-07-manuellima-FR-sd.mp4" type="video/mp4" media="(min-device-width:760px)" title="SD 576p <small>(H264)</small>">
-            <source src="http://digup.tv/assets/video/sd/WebM/digup-07-manuellima-FR-sd.webm" type="video/webm" media="(min-device-width:760px)" title="SD 576p <small>(WebM)</small>">
-            <source src="http://digup.tv/assets/video/mobile/H264/digup-07-manuellima-FR-mobile.mp4" type="video/mp4" media="" title="HQ 360p <small>(H264)</small>">
-            <source src="http://digup.tv/assets/video/mobile/WebM/digup-07-manuellima-FR-mobile.webm" type="video/webm" media="" title="HQ 360p <small>(WebM)</small>">
+            <source src="big_buck_bunny_trailer_720p.mov" type="video/mp4" media="(min-device-width:800px)" title="HD 720p <small>(H264)</small>">
+            <source src="big_buck_bunny_trailer_720p.webm" type="video/webm" media="(min-device-width:800px)" title="HD 720p <small>(WebM)</small>">
+            <source src="big_buck_bunny_trailer_480p.mov" type="video/mp4" title="HQ 480p <small>(H264)</small>">
+            <source src="big_buck_bunny_trailer_480p.webm" type="video/webm" title="HQ 480p <small>(WebM)</small>">
             <!-- Subtiles -->
-            <track kind="subtitles" src="digup-07-manuellima-FR.srt" srclang="fr" lang="fr" label="Français <small>(subtitles)</small>"></track>
+            <track kind="subtitles" src="subtitles.srt" srclang="fr" lang="fr" label="Titrages">
             <!-- Flash fallback -->
             <div class="videoFallback">
                 <!-- TODO -->
@@ -39,12 +37,13 @@
             <source src="PeasantWhat3_w3.ogg" type="audio/ogg" title="OGG"></source>
         </audio>
 
-        <div id="konsole"></div>
+        <p class="credits">Video <em>Big Buck Bunny</em> - &copy; copyright 2008, Blender Foundation / <a href="http://www.bigbuckbunny.org">www.bigbuckbunny.org</a></p>
         
         <script type="text/javascript" src="../src/lib/captionator.js"></script>
         <script type="text/javascript" src="../src/mediaplayer.js"></script>
 
     	<script type="text/javascript">
+        // video player
         var player = document.getElementById("player");
         var mediaplayer = new MediaPlayer(player, {
             useiPadUseNativeControls: false,
@@ -52,20 +51,7 @@
             useAndroidUseNativeControls: false,
             alwaysUseNativeControls: false
         });
-        // try {
-        //     var player = document.getElementById("player");
-        //     var mediaplayer = new MediaPlayer(player, {
-        //         useiPadUseNativeControls: false,
-        //         useiPhoneUseNativeControls: false,
-        //         useAndroidUseNativeControls: false,
-        //         alwaysUseNativeControls: false
-        //     });
-        // }
-        // catch(error) {
-        //     console.error(error);
-        //     document.getElementById("konsole").innerHTML += error.toString() + '<br />';
-        // }
-
+        // audio player
         var audioplayer = new MediaPlayer('audioplayer', { displaySourceChooser: false });
     	</script>
 	</body>
